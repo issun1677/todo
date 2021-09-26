@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+</head>
+
+
+<style>
+	@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+
+
+	html {
+			
+		background: #851438;
+	} 	
+
+
+	.container{
+		position: relative;
+		background: whitesmoke;
+		width: 50%;
+		height: 80px;
+		top: 50px;
+		border-radius: 15px ;
+		
+		
+	}
+
+	h1 {
+		position: relative;
+		text-align: center;
+		top: 10px;
+		font-size: 40px;
+	}
+
+	form {
+
+			position: relative;
+			top: 170px;
+			left: 540px;
+			width: auto;
+	}
+
+	.input {
+		width: 40%;
+	}
+
+
+	.button {
+		width: 80px;
+		height: 50px;
+		margin-left: 10px;
+		border-radius: 15px;
+	
+	} 
+
+
+	Ul {
+
+			background: white;
+			margin-top: 15px;
+			width: 45%;
+			text-align: center;
+			border-radius: 15px;
+
+	}
+
+	li {
+		margin: 10px;
+	}
+
+</style>
+
+
+
+<body>
+
+<header>
+	<div class="container">
+		<h1>Django Todo List</h1>		
+	</div>
+</header>
+
+
+<form action="Home" method="POST" accept-charset="utf-8">
+	{% csrf_token %}
+	<input class="input is-primary input is-medium" type="text" placeholder="Write something here....">
+	<button class="button is-primary"><h2 class="btn-add">Add</h2></button>
+
+
+	<ul class="myUL">
+	  <li>Hit the gym</li>
+	  <li class="checked">Pay bills</li>
+	  <li>Meet George</li>
+	  <li>Buy eggs</li>
+	  <li>Read a book</li>
+	  <li>Organize office</li>
+	</ul>
+
+
+</form>
+
+
+
+</body>
+</html>
+
+
+
