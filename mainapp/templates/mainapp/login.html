@@ -1,0 +1,17 @@
+{% extends "mainapp/base.html" %}
+
+{% block content %}
+    
+
+<h1><a href="{% url 'tasks' %}">Django Todo</a></h1>
+<h3>Log in to oragize your tasks</h3>
+
+<form action="" method="POST">
+	{% csrf_token %}
+	{{form.as_p}}
+	<input type="submit" value="login">
+</form>
+
+<p>Dont have an account? <a href="{% url 'register' %}" title="">Register</a></p>
+
+{% endblock content %}

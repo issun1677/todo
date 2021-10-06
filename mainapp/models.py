@@ -1,22 +1,32 @@
 from django.db import models
-from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
-class Todotext(models.Model):
-	text = models.TextField(max_length=150, blank=False)
-	created = models.DateTimeField(default=timezone.now().strftime("%Y-%m-%d"))
-	
+class Task(models.Model):
+	user = models.ForeignKey(User, 
+		on_delete=models.CASCADE, 
+		null=True, 
+		blank=False)
+	title = models.CharField(max_length=100, blank=False)
+	desc = models.TextField(max_length=300, null=True, blank=True)
+	created = models.DateTimeField(auto_now_add=True)
+	completed = models.BooleanField(default=False)
 
 	class Meta:
-		ordering = ["-created"]
-
+		verbose_name = ("Task")
+		verbose_name_plural = ("Tasks")
 
 	class Meta:
-		verbose_name= "Todotext"
-		verbose_name_plural= "Todotexts"
+		ordering = ["completed"]
+    
 
-	
 	def __str__(self):
-		return self.text
+		return self.title
 
+
+	
+
+
+
+	 
 

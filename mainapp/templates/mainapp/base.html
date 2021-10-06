@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+
+</head>
+
+<style>
+
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+	body {
+		background: rgb(25,18,153);
+		background: linear-gradient(90deg, rgba(25,18,153,1) 0%, rgba(66,108,199,1) 51%, rgba(0,212,255,1) 100%);
+		padding-top: 50px;
+		font-family: 'Montserrat', sans-serif
+
+	}
+
+	.container {
+		max-width: 500px;
+		margin: auto;
+		background-color: white;
+		border-radius: 10px;
+		
+		padding: 10px;
+	}
+
+	table {
+		padding: 10px;
+	}
+
+	a {
+		padding: 5px;
+		margin: 10px;
+	}
+
+	input {
+		padding: 10px;
+		margin: 10px;
+	}
+</style>
+
+
+<body>
+	
+
+	<div class="container">
+ 		{% block content %}
+ 			
+ 		{% endblock content %}
+		
+	</div>
+		
+
+
+</body>
+</html>

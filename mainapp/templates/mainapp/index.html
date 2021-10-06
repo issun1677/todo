@@ -1,113 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+{% extends "mainapp/base.html" %}
 
-</head>
-
-
-<style>
-	@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
-
-
-	html {
-			
-		background: #851438;
-	} 	
-
-
-	.container{
-		position: relative;
-		background: whitesmoke;
-		width: 50%;
-		height: 80px;
-		top: 50px;
-		border-radius: 15px ;
-		
-		
-	}
-
-	h1 {
-		position: relative;
-		text-align: center;
-		top: 10px;
-		font-size: 40px;
-	}
-
-	form {
-
-			position: relative;
-			top: 170px;
-			left: 540px;
-			width: auto;
-	}
-
-	.input {
-		width: 40%;
-	}
-
-
-	.button {
-		width: 80px;
-		height: 50px;
-		margin-left: 10px;
-		border-radius: 15px;
+{% block content %}
 	
-	} 
 
-
-	Ul {
-
-			background: white;
-			margin-top: 15px;
-			width: 45%;
-			text-align: center;
-			border-radius: 15px;
-
-	}
-
-	li {
-		margin: 10px;
-	}
-
-</style>
-
-
-
-<body>
-
-<header>
-	<div class="container">
-		<h1>Django Todo List</h1>		
+<div class="header">
+	{% if request.user.is_authenticated %}
+	<div>
+		<h1>Welcome {{request.user}}</h1>
+		<h3>you have {{count}} incomplete task{{ count|pluralize:'s' }}</h3>
 	</div>
-</header>
+	
+</div>
 
 
-<form action="Home" method="POST" accept-charset="utf-8">
-	{% csrf_token %}
-	<input class="input is-primary input is-medium" type="text" placeholder="Write something here....">
-	<button class="button is-primary"><h2 class="btn-add">Add</h2></button>
+
+<a href="{% url "logout" %}">Log Out</a>
+{% else %}
+<a href="{% url "login" %}">Log In</a>
+{% endif %}
+
+<hr>
+
+<h1>Django's Todo List</h1>
 
 
-	<ul class="myUL">
-	  <li>Hit the gym</li>
-	  <li class="checked">Pay bills</li>
-	  <li>Meet George</li>
-	  <li>Buy eggs</li>
-	  <li>Read a book</li>
-	  <li>Organize office</li>
-	</ul>
-
+<form action="" method="GET" accept-charset="utf-8">
+	
+	<input type="text" name="search-area" placeholder="Search Tasks" value="{{search}}">
+	<input type="submit" value="Search">
 
 </form>
 
 
 
-</body>
-</html>
 
+<a href="{% url 'createtask' %}">Add Task</a>
 
+<table>
+	<tr>
+		<th>Tasks</th>
+	</tr>
+	{% for task in taskee %}
+	<tr>
+		<td>{{task.title}}</td>
+		<td>
+			<a class="btn" href="{% url 'updatetask' task.id %}">Update</a>
+			<a class="btn" href="{% url 'deletetask' task.id %}">Delete</a>
+			
+		</td>
+	</tr>
+	{% empty %}
+		<h3>Todo list is EMPTY</h3>
+	{% endfor %}
+</table>
 
+{% endblock content %}
