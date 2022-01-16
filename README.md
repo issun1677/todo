@@ -1,5 +1,5 @@
 # todo
 
 
-\ A simple Todo App created with Django \
+A simple Todo App created with Django \
 Crud functionalities
